@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="description" content="FerrimasJR, ferretería. Escríbenos por WhatsApp y te atendemos.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FerrimasJR">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+#install { justify-self: start; }
+@media (display-mode: standalone) { .tip { display: none; } }
+</style>
+<title>FerrimasJR Pedidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: banda blanca con el logo (su fondo es blanco), franja verde-naranja-azul del logo, y debajo una sola acción: abrir el chat de WhatsApp. */
+:root {
+  --bg: #EEF2F1;
+  --surface: #FFFFFF;
+  --fg: #17232E;
+  --muted: #4F5F69;
+  --line: #CBD5D2;
+  --blue: #284A93;
+  --green: #277A3C;
+  --on-green: #FFFFFF;
+  --orange: #E5772D;
+  --on-orange: #1D1409;
+  --focus: #1B5FB8;
+  --f-display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E161B;
+    --surface: #17222A;
+    --fg: #E8EEEF;
+    --muted: #9CABB3;
+    --line: #2C3B44;
+    --blue: #93ADEB;
+    --orange: #F08A3E;
+    --focus: #8DB6F2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E161B;
+  --surface: #17222A;
+  --fg: #E8EEEF;
+  --muted: #9CABB3;
+  --line: #2C3B44;
+  --blue: #93ADEB;
+  --orange: #F08A3E;
+  --focus: #8DB6F2;
+  color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 16px; line-height: 1.5; }
+*, *::before, *::after { box-sizing: border-box; }
+button, textarea { font: inherit; color: inherit; }
+h1, h2, p { margin: 0; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.wrap {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* La banda es blanca en los dos temas porque el logo trae fondo blanco. */
+.top { background: #FFFFFF; }
+.top-in { display: flex; justify-content: center; padding-block: 14px 8px; }
+.logo { display: block; width: 168px; max-width: 60%; height: auto; }
+.stripe { display: grid; grid-template-columns: 1fr 1fr 1fr; height: 10px; }
+.stripe i:nth-child(1) { background: #2F8F46; }
+.stripe i:nth-child(2) { background: var(--orange); }
+.stripe i:nth-child(3) { background: #284A93; }
+
+.main { display: grid; gap: 22px; padding-block: 28px 40px; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(34px, 8vw, 46px); line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; text-wrap: balance; color: var(--blue); }
+.lead { max-width: 52ch; font-size: 18px; color: var(--muted); }
+
+.wa {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 60px; padding: 14px 20px;
+  border-radius: 4px; background: var(--green); color: var(--on-green);
+  font-size: 19px; font-weight: 600; text-align: center; text-decoration: none;
+}
+.wa:hover { filter: brightness(1.1); }
+.wa svg { flex: none; width: 26px; height: 26px; }
+
+.panel { display: grid; gap: 12px; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--orange); border-radius: 0 0 6px 6px; }
+.panel h2 { font-size: 15px; font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); cursor: pointer; font-weight: 500; }
+.chip[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: var(--on-orange); font-weight: 600; }
+.lbl { font-size: 14px; color: var(--muted); }
+textarea { width: 100%; min-height: 96px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); resize: vertical; }
+
+.number { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; }
+.number-value { font-family: var(--f-mono); font-size: 20px; letter-spacing: 0.02em; color: var(--blue); user-select: all; }
+.copy { min-height: 40px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); cursor: pointer; font-weight: 600; }
+.tip { font-size: 14px; color: var(--muted); max-width: 56ch; }
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%); z-index: 20;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  max-width: min(92vw, 380px); padding: 10px 16px; border-radius: 4px;
+  background: var(--fg); color: var(--bg); font-size: 14px; text-align: center;
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <img class="logo" src="logo.png" alt="FerrimasJR" width="314" height="282">
+  </div>
+  <div class="stripe" aria-hidden="true"><i></i><i></i><i></i></div>
+</header>
+
+<main class="wrap main">
+  <div style="display:grid;gap:12px">
+    <h1>Escríbenos y te atendemos por WhatsApp</h1>
+    <p class="lead">Cuéntanos qué material, herramienta o repuesto necesitas. Te respondemos con disponibilidad y precio.</p>
+  </div>
+
+  <a class="wa" id="wa" href="https://wa.me/50493344023" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.45 15.04L2 22l5.1-1.34A9.93 9.93 0 1 0 12.04 2Zm0 18.1a8.15 8.15 0 0 1-4.15-1.14l-.3-.18-3.03.8.81-2.95-.2-.31a8.16 8.16 0 1 1 6.87 3.78Zm4.47-6.1c-.25-.12-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12-.16.25-.63.8-.77.96-.14.17-.28.19-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.46-1.37-1.7-.14-.25-.02-.38.1-.5.11-.11.25-.28.37-.42.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.16 1.73 2.65 4.2 3.72.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.45-.59 1.65-1.17.2-.57.2-1.06.14-1.17-.06-.1-.22-.16-.47-.28Z"/></svg>
+    Abrir chat de WhatsApp
+  </a>
+
+  <section class="panel" aria-labelledby="t-msg">
+    <h2 id="t-msg">¿Quieres empezar con un mensaje listo? (opcional)</h2>
+    <div class="chips" id="chips" role="group" aria-label="Temas del mensaje">
+      <button type="button" class="chip" data-msg="Hola, quiero cotizar materiales de construcción.">Cotizar materiales</button>
+      <button type="button" class="chip" data-msg="Hola, quiero saber si tienen este producto: ">Preguntar por un producto</button>
+      <button type="button" class="chip" data-msg="Hola, quiero hacer un pedido con entrega a domicilio.">Pedido a domicilio</button>
+    </div>
+    <label for="msg" class="lbl">Tu mensaje</label>
+    <textarea id="msg" placeholder="Escribe aquí lo que necesitas"></textarea>
+  </section>
+
+  <section class="number" aria-label="Número de WhatsApp">
+    <div>
+      <p class="lbl">WhatsApp de FerrimasJR</p>
+      <p class="number-value" id="num">+504 9334-4023</p>
+    </div>
+    <button type="button" class="copy" id="copy">Copiar número</button>
+  </section>
+
+  <button type="button" class="copy" id="install" hidden>Instalar app en tu celular</button>
+  <p class="tip">Para tenernos a un toque, abre el menú de tu navegador y elige «Agregar a pantalla de inicio».</p>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  var NUMBER = "50493344023";
+  var wa = document.getElementById("wa");
+  var msg = document.getElementById("msg");
+  var chips = document.getElementById("chips");
+  var toastEl = document.getElementById("toast");
+  var timer = null;
+
+  function toast(t) {
+    toastEl.textContent = t;
+    toastEl.hidden = false;
+    clearTimeout(timer);
+    timer = setTimeout(function () { toastEl.hidden = true; }, 3000);
+  }
+  function updateLink() {
+    var t = msg.value.trim();
+    wa.href = "https://wa.me/" + NUMBER + (t ? "?text=" + encodeURIComponent(t) : "");
+  }
+  function markChip(text) {
+    Array.prototype.forEach.call(chips.querySelectorAll(".chip"), function (c) {
+      c.setAttribute("aria-pressed", String(c.getAttribute("data-msg") === text));
+    });
+  }
+  chips.addEventListener("click", function (e) {
+    var b = e.target.closest(".chip");
+    if (!b) return;
+    var text = b.getAttribute("data-msg");
+    msg.value = text;
+    markChip(text);
+    updateLink();
+    msg.focus();
+    msg.setSelectionRange(text.length, text.length);
+  });
+  msg.addEventListener("input", function () { markChip(msg.value); updateLink(); });
+
+  document.getElementById("copy").addEventListener("click", function () {
+    var num = document.getElementById("num");
+    function fallback() {
+      var r = document.createRange();
+      r.selectNodeContents(num);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      toast("Selecciona y copia el número.");
+    }
+    try {
+      navigator.clipboard.writeText("+504 9334-4023").then(function () { toast("Número copiado."); }, fallback);
+    } catch (err) { fallback(); }
+  });
+
+  var installBtn = document.getElementById("install");
+  var deferred = null;
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    deferred = e;
+    installBtn.hidden = false;
+  });
+  installBtn.addEventListener("click", function () {
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function () { deferred = null; installBtn.hidden = true; });
+  });
+  window.addEventListener("appinstalled", function () { installBtn.hidden = true; });
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
+
+  updateLink();
+})();
+</script>
+</body>
+</html>
