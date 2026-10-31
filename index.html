@@ -150,6 +150,7 @@ textarea { width: 100%; min-height: 96px; padding: 11px 12px; border: 1px solid 
     </div>
     <label for="msg" class="lbl">Tu mensaje</label>
     <textarea id="msg" placeholder="Escribe aquí lo que necesitas"></textarea>
+    <a class="wa" id="wa2" href="https://wa.me/50493344023" target="_blank" rel="noopener">Enviar este mensaje por WhatsApp</a>
   </section>
 
   <section class="number" aria-label="Número de WhatsApp">
@@ -169,6 +170,7 @@ textarea { width: 100%; min-height: 96px; padding: 11px 12px; border: 1px solid 
 (function () {
   var NUMBER = "50493344023";
   var wa = document.getElementById("wa");
+  var wa2 = document.getElementById("wa2");
   var msg = document.getElementById("msg");
   var chips = document.getElementById("chips");
   var toastEl = document.getElementById("toast");
@@ -182,7 +184,9 @@ textarea { width: 100%; min-height: 96px; padding: 11px 12px; border: 1px solid 
   }
   function updateLink() {
     var t = msg.value.trim();
-    wa.href = "https://wa.me/" + NUMBER + (t ? "?text=" + encodeURIComponent(t) : "");
+    var url = "https://wa.me/" + NUMBER + (t ? "?text=" + encodeURIComponent(t) : "");
+    wa.href = url;
+    wa2.href = url;
   }
   function markChip(text) {
     Array.prototype.forEach.call(chips.querySelectorAll(".chip"), function (c) {

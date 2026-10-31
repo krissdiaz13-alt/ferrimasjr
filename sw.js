@@ -1,6 +1,6 @@
 // Guarda los archivos de la página para que abra rápido y también sin señal.
 // Si cambias algo de la página, sube el número de CACHE para que los clientes reciban la versión nueva.
-var CACHE = "ferrimasjr-v1";
+var CACHE = "ferrimasjr-v2";
 var FILES = ["./", "index.html", "manifest.webmanifest", "logo.png", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", function (e) {
